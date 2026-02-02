@@ -28,9 +28,8 @@ namespace WeatherAppAppWpf
             label.Content = "Загрузка";
             label.VerticalAlignment = VerticalAlignment.Center;
             label.HorizontalAlignment = HorizontalAlignment.Center;
-            label.Background = Brushes.White;
             label.FontSize = 40;
-
+            border.Visibility = Visibility.Visible;
 
             Grid.SetColumn(label, 1);
             Grid.SetRow(label, 0);

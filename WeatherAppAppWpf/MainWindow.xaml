@@ -36,25 +36,69 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBox Width="200" Margin="0,0,20,0" FontSize="30"></TextBox>
                 <Button x:Name="buttonSubmit" MinWidth="50" Padding="10">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="#FFD4E97D" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="15"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                                <ContentPresenter HorizontalAlignment="Center" 
-                                  VerticalAlignment="Center"/>
+                            <Border x:Name="border"
+                CornerRadius="15"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Background.Color"
+                                            To="#FF1565C0"
+                                            Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Background.Color"
+                                            To="#FF0A3D91"
+                                            Duration="0:0:0.1"/>
+                                                <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                             Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                             To="0.95"
+                                             Duration="0:0:0.1"/>
+                                                <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                             Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                             To="0.95"
+                                             Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Background.Color"
+                                            To="#FFBDBDBD"
+                                            Duration="0:0:0.2"/>
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="BorderBrush.Color"
+                                            To="#FF9E9E9E"
+                                            Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <ContentPresenter x:Name="contentPresenter"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              RenderTransformOrigin="0.5,0.5">
+                                    <ContentPresenter.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
             </StackPanel>
+            <Border x:Name="border" Grid.Row="0" Grid.Column="1" Background="White" Margin="20" CornerRadius="20" Visibility="Collapsed"></Border>
         </Grid>
     </Grid>
 </Window>
