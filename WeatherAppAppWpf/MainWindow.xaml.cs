@@ -19,6 +19,22 @@ namespace WeatherAppAppWpf
         public MainWindow()
         {
             InitializeComponent();
+            buttonSubmit.Click += ButtonSubmit_Click;
+        }
+
+        private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            Label label = new Label();
+            label.Content = "Загрузка";
+            label.VerticalAlignment = VerticalAlignment.Center;
+            label.HorizontalAlignment = HorizontalAlignment.Center;
+            label.Background = Brushes.White;
+            label.FontSize = 40;
+
+
+            Grid.SetColumn(label, 1);
+            Grid.SetRow(label, 0);
+            grid.Children.Add(label);
         }
     }
 }
