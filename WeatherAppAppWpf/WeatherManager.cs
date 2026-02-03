@@ -5,6 +5,7 @@ using System.Text;
 using RestSharp;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.VisualBasic;
 
 namespace WeatherAppAppWpf
 {
@@ -22,26 +23,23 @@ namespace WeatherAppAppWpf
 
             var client = new RestClient("https://api.openweathermap.org/data/2.5/");
 
-            // Создаем запрос (GET /weather)
             var request = new RestRequest("weather", Method.Get);
 
-            // Добавляем параметры:
+
             request.AddParameter("q", city);             // Город
             request.AddParameter("appid", _apiKey);     // API-ключ
             request.AddParameter("units", "metric");    // Градусы Цельсия
             request.AddParameter("lang", "ru");         // Язык ответа
 
 
-
-            // Отправляем запрос и получаем ответ
             var response = client.Execute(request);
 
 
             if (response.IsSuccessful)
             {
-
                 return JsonConvert.DeserializeObject<WeatherData>(response.Content);
             }
+
             throw new Exception($"Ошибка: {response.StatusCode} - {response.ErrorMessage}");
         }
     }
@@ -50,15 +48,20 @@ namespace WeatherAppAppWpf
         public MainData Main { get; set; }
         public Weather[] Weather { get; set; }
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name} - {Main.Temp} - {Main.Humidity}";
+        }
     }
 
-    public class MainData//температура и влажность
+    public class MainData
     {
         public float Temp { get; set; }
         public int Humidity { get; set; }
     }
 
-    public class Weather//город и описание погоды
+    public class Weather
     {
         public string Main { get; set; }
         public string Description { get; set; }

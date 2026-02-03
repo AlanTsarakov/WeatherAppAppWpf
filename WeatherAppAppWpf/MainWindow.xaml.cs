@@ -25,12 +25,15 @@ namespace WeatherAppAppWpf
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             Label label = new Label();
-            label.Content = "Загрузка";
+            WeatherManager weatherManager = new WeatherManager("");
+            string weather = weatherManager.GetWeather("Владикавказ").ToString();
+            label.Content = weather;
             label.VerticalAlignment = VerticalAlignment.Center;
             label.HorizontalAlignment = HorizontalAlignment.Center;
             label.FontSize = 40;
             border.Visibility = Visibility.Visible;
 
+            
             Grid.SetColumn(label, 1);
             Grid.SetRow(label, 0);
             grid.Children.Add(label);
