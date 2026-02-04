@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:WeatherAppAppWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FF1E91C8">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                <GradientStop Color="Black" Offset="4"/>
+                <GradientStop Color="SkyBlue"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -34,7 +40,10 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Width="200" Margin="0,0,20,0" FontSize="30"></TextBox>
+
+                <Border CornerRadius="10" Background="White" BorderBrush="Black" BorderThickness="1"  Margin="0,0,20,0">
+                    <TextBox Width="200" FontSize="30" Margin="10" BorderThickness="0"></TextBox>
+                </Border>
                 <Button x:Name="buttonSubmit" MinWidth="50" Padding="10">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
