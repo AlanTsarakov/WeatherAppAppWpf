@@ -33,6 +33,7 @@ namespace WeatherAppAppWpf
             label.FontSize = 40;
             border.Visibility = Visibility.Visible;
 
+
             
             Grid.SetColumn(label, 1);
             Grid.SetRow(label, 0);

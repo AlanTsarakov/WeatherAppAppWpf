@@ -42,11 +42,11 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Border CornerRadius="10" Background="White" BorderBrush="Black" BorderThickness="1"  Margin="0,0,20,0">
-                    <TextBox Width="200" FontSize="30" Margin="10" BorderThickness="0"></TextBox>
+                    <TextBox Width="200" FontSize="15" Margin="10" BorderThickness="0"></TextBox>
                 </Border>
-                <Button x:Name="buttonSubmit" MinWidth="50" Padding="10">
+                <Button x:Name="buttonSubmit" MinWidth="50" Padding="10" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
                     <Button.Template>
-                        <ControlTemplate TargetType="Button">
+                        <ControlTemplate TargetType="{x:Type Button}">
                             <Border x:Name="border"
                 CornerRadius="15"
                 Background="{TemplateBinding Background}"
